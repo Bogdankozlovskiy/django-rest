@@ -3,6 +3,8 @@ from rest_framework import viewsets, views, response
 from .serializers import UserSerializer, GroupSerializer, VisitSerializer, VisitSerializerAPI
 from .models import Visit
 from rest_framework import permissions
+from rest_framework.authtoken.models import Token
+from django.core.mail import send_mail
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -25,6 +27,11 @@ class VisitViewSetAPI(views.APIView):
     #permission_classes = [permissions.AllowAny, ]
 
     def get(self, request):
+        #test
+        token = Token.objects.get(user_id=1)
+        print(token)
+        send_mail('subjects', str(token), 'bkozlovsky@bk.ru', ['bkozlovsky@bk.ru'], fail_silently=False)
+        #test
         #print(request.GET.get('data'))# по приколу
         visits = Visit.objects.all()
         serializer_class = VisitSerializerAPI(visits, many=True)

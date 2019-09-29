@@ -135,3 +135,10 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10
 }
+
+EMAIL_HOST = 'smtp.mail.ru'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'bkozlovsky@bk.ru'
+EMAIL_HOST_PASSWORD = 'gd0d469S'
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
