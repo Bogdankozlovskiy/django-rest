@@ -22,6 +22,7 @@ class VisitViewSet(viewsets.ModelViewSet):
 
 class VisitViewSetAPI(views.APIView):
     permission_classes = [permissions.IsAuthenticated, ]
+    #permission_classes = [permissions.AllowAny, ]
 
     def get(self, request):
         #print(request.GET.get('data'))# по приколу
