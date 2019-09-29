@@ -4,18 +4,13 @@ from .serializers import UserSerializer, GroupSerializer, VisitSerializer, Visit
 from .models import Visit
 from rest_framework import permissions
 
+
 class UserViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
 
 
 class GroupViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows groups to be viewed or edited.
-    """
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
 
@@ -29,7 +24,15 @@ class VisitViewSetAPI(views.APIView):
     permission_classes = [permissions.IsAuthenticated, ]
 
     def get(self, request):
+        #print(request.GET.get('data'))# по приколу
         visits = Visit.objects.all()
         serializer_class = VisitSerializerAPI(visits, many=True)
         return response.Response({'data':serializer_class.data})
+
+    def post(self, request):
+        visit = VisitSerializerAPI(data=request.data)
+        if visit.is_valid():
+            visit.save()
+            return response.Response(200)
+        return response.Response(201)
 
