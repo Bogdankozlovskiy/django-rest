@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets, views, response
-from .serializers import UserSerializer, GroupSerializer, VisitSerializer
+from .serializers import UserSerializer, GroupSerializer, VisitSerializer, VisitSerializerAPI
 from .models import Visit
 from rest_framework import permissions
 
@@ -30,6 +30,6 @@ class VisitViewSetAPI(views.APIView):
 
     def get(self, request):
         visits = Visit.objects.all()
-        serializer_class = VisitSerializer(visits, many=True)
+        serializer_class = VisitSerializerAPI(visits, many=True)
         return response.Response({'data':serializer_class.data})
 

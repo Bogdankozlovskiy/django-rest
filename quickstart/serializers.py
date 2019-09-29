@@ -15,12 +15,13 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
         fields = ['url', 'name']
 
 
-#class VisitSerializer(serializers.HyperlinkedModelSerializer):
-#    class Meta:
-#        model = Visit
-#        fields = ['name_visit', 'date_of_visit', 'time_to_remind']
+class VisitSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Visit
+        fields = ['name_visit', 'date_of_visit', 'time_to_remind']
 
-class VisitSerializer(serializers.ModelSerializer):
+
+class VisitSerializerAPI(serializers.ModelSerializer):
     class Meta:
         model = Visit
         fields = ('name_visit', 'date_of_visit', 'time_to_remind')

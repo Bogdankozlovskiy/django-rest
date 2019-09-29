@@ -2,5 +2,9 @@ from django.contrib import admin
 from .models import Visit
 
 
-admin.site.register(Visit)
+class VisitAdmin(admin.ModelAdmin):
+    readonly_fields = ['date_of_ring_for_visit']
+
+
+admin.site.register(Visit, VisitAdmin)
 # Register your models here.
