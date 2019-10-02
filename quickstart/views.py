@@ -1,37 +1,32 @@
-from django.contrib.auth.models import User, Group
-from rest_framework import viewsets, views, response
-from .serializers import UserSerializer, GroupSerializer, VisitSerializer, VisitSerializerAPI
+from rest_framework import views, response
+from .serializers import VisitSerializerAPI, UserSerializerAPI
 from .models import Visit
 from rest_framework import permissions
 from rest_framework.authtoken.models import Token
 from django.core.mail import send_mail
+from django.contrib.auth.models import User
 
 
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all().order_by('-date_joined')
-    serializer_class = UserSerializer
+class RegisterAPI(views.APIView):
+    permission_classes = [permissions.AllowAny]
 
+    def get(self, request):
+        return response.Response({'data':'send password, username and email. we send token on your email'})
 
-class GroupViewSet(viewsets.ModelViewSet):
-    queryset = Group.objects.all()
-    serializer_class = GroupSerializer
-
-
-class VisitViewSet(viewsets.ModelViewSet):
-    queryset = Visit.objects.all()
-    serializer_class = VisitSerializer
+    def post(self, request):
+        user = UserSerializerAPI(data=request.data)
+        if user.is_valid():
+            user.save()
+            token = Token.objects.create(user_id=User.objects.get(username=user.data['username'], password=user.data['password']).id)
+            send_mail('Token', str(token.key), 'bkozlovsky@bk.ru', ['bkozlovsky@bk.ru'], fail_silently=False)
+            return response.Response('done')
+        return response.Response('Error')
 
 
 class VisitViewSetAPI(views.APIView):
     permission_classes = [permissions.IsAuthenticated, ]
-    #permission_classes = [permissions.AllowAny, ]
 
     def get(self, request):
-        #test
-        token = Token.objects.get(user_id=1)
-        print(token)
-        send_mail('subjects', str(token), 'bkozlovsky@bk.ru', ['bkozlovsky@bk.ru'], fail_silently=False)
-        #test
         #print(request.GET.get('data'))# по приколу
         visits = Visit.objects.all()
         serializer_class = VisitSerializerAPI(visits, many=True)

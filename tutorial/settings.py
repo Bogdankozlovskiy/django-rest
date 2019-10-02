@@ -33,7 +33,6 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'rest_framework',
     'quickstart',
-    'djoser',
     'rest_framework.authtoken',
     'suit',
 
