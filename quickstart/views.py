@@ -17,8 +17,9 @@ class RegisterAPI(views.APIView):
         user = UserSerializerAPI(data=request.data)
         if user.is_valid():
             user.save()
-            token = Token.objects.create(user_id=User.objects.get(username=user.data['username'], password=user.data['password']).id)
-            send_mail('Token', str(token.key), 'bkozlovsky@bk.ru', ['bkozlovsky@bk.ru'], fail_silently=False)
+            token = Token.objects.create(user_id=User.objects.get(username=user.data['username'],
+                                                                  password=user.data['password']).id)
+            send_mail('Token', str(token.key), 'bkozlovsky@bk.ru', [user.data['email']], fail_silently=False)
             return response.Response('done')
         return response.Response('Error')
 
@@ -27,7 +28,6 @@ class VisitViewSetAPI(views.APIView):
     permission_classes = [permissions.IsAuthenticated, ]
 
     def get(self, request):
-        #print(request.GET.get('data'))# по приколу
         visits = Visit.objects.all()
         serializer_class = VisitSerializerAPI(visits, many=True)
         return response.Response({'data':serializer_class.data})
