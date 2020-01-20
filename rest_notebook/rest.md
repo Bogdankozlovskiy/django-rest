@@ -492,7 +492,7 @@ text = text.decode()
 ```python
 print(text)
 ```
-
+```html
     Date: Mon, 20 Jan 2020 13:58:04 GMT
     Server: WSGIServer/0.2 CPython/3.7.3
     Content-Type: text/html; charset=utf-8
@@ -504,8 +504,6 @@ print(text)
     
     
     
-    
-    ```html
     <!DOCTYPE html>
     <html>
       <head>
@@ -812,7 +810,7 @@ print(text)
       </body>
       
     </html>
-    ```
+```
     
 
 
@@ -822,7 +820,7 @@ HTML(text)
 
 
 
-
+```html
 Date: Mon, 20 Jan 2020 13:11:37 GMT
 Server: WSGIServer/0.2 CPython/3.7.3
 Content-Type: text/html; charset=utf-8
@@ -835,7 +833,7 @@ Set-Cookie:  csrftoken=vxJiU3PcDnkhxiVnbq0TbXx8zUC3N2v757bziZrgBxTbgYuZkPVJ2Awsd
 
 
 
-```html
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -1091,7 +1089,7 @@ Set-Cookie:  csrftoken=vxJiU3PcDnkhxiVnbq0TbXx8zUC3N2v757bziZrgBxTbgYuZkPVJ2Awsd
     }
 ]</pre>
               </div>
-            ```
+```
 
 
 
