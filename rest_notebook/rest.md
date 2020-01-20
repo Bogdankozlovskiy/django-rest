@@ -505,7 +505,7 @@ print(text)
     
     
     
-    
+    ```html
     <!DOCTYPE html>
     <html>
       <head>
@@ -812,7 +812,7 @@ print(text)
       </body>
       
     </html>
-    
+    ```
     
 
 
@@ -835,7 +835,7 @@ Set-Cookie:  csrftoken=vxJiU3PcDnkhxiVnbq0TbXx8zUC3N2v757bziZrgBxTbgYuZkPVJ2Awsd
 
 
 
-
+```html
 <!DOCTYPE html>
 <html>
   <head>
@@ -1091,7 +1091,7 @@ Set-Cookie:  csrftoken=vxJiU3PcDnkhxiVnbq0TbXx8zUC3N2v757bziZrgBxTbgYuZkPVJ2Awsd
     }
 ]</pre>
               </div>
-            
+            ```
 
 
 
