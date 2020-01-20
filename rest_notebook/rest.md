@@ -198,7 +198,7 @@ HTML(res.text)
 
 
 
-
+```html
 <!DOCTYPE html>
 <html>
   <head>
@@ -276,7 +276,7 @@ HTML(res.text)
 </body>
 
 </html>
-
+```
 
 
 
@@ -289,7 +289,7 @@ HTML(res.text)
 
 
 
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -389,7 +389,7 @@ HTML(res.text)
   </div>
 </body>
 </html>
-
+```
 
 
 
